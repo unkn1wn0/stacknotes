@@ -2,7 +2,7 @@
 
 A beautiful, local-first, Notion-like note-taking application built with Next.js 15.
 
-<!-- Add preview.png here -->
+<!-- Need to add preview, will add later -->
 
 ## ✨ Features
 
@@ -35,7 +35,7 @@ A beautiful, local-first, Notion-like note-taking application built with Next.js
 
 1.  Clone the repository (or download the source):
     ```bash
-    git clone https://github.com/yourusername/stacknotes.git
+    git clone https://github.com/unkn1wn/stacknotes.git
     cd stacknotes
     ```
 
@@ -74,6 +74,9 @@ stacknotes/
 - **Slash Menu**: Type `/` in the editor to open the block menu.
 - **Formatting**: Select text to reveal the bubble menu for bold, italic, etc.
 - **Favorites**: Hover over a page in the sidebar and click the heart icon to pin it.
+
+## Changelog
+- Stacknotes 0.1: First beta version of Stacknotes, pretty minimal
 
 ## 📄 License
 
