@@ -75,6 +75,9 @@ stacknotes/
 - **Formatting**: Select text to reveal the bubble menu for bold, italic, etc.
 - **Favorites**: Hover over a page in the sidebar and click the heart icon to pin it.
 
+## Public instances
+There are no current public instances and there won't be until Stacknotes has reached to a usable and stable state
+
 ## Changelog
 - Stacknotes 0.1: First beta version of Stacknotes, pretty minimal
 
