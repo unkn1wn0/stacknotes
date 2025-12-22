@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Stacknotes 📚
 
-## Getting Started
+A beautiful, local-first, Notion-like note-taking application built with Next.js 15.
 
-First, run the development server:
+<!-- Add preview.png here -->
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## ✨ Features
+
+- **Block-Based Editor**: Powered by [TipTap](https://tiptap.dev/), providing a fluid Notion-like writing experience.
+- **Slash Commands**: Type `/` to instantly access blocks like headings, lists, todos, code blocks, and more.
+- **Local Persistence**: All your notes are stored locally as JSON files in a `data/` directory. No external database required.
+- **Privacy Focused**: Your data stays on your machine.
+- **Beautiful Design**:
+    - Clean, extensive typography using Inter, Source Serif 4, and JetBrains Mono.
+    - Full Dark Mode support.
+    - Smooth animations and refined UI details.
+- **Next.js API Routes**: Self-contained backend logic integrated directly into the application.
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Editor**: [TipTap](https://tiptap.dev/)
+- **State Management**: [Zustand](https://github.com/pmndrs/zustand)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Language**: TypeScript
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18.17 or later
+
+### Installation
+
+1.  Clone the repository (or download the source):
+    ```bash
+    git clone https://github.com/yourusername/stacknotes.git
+    cd stacknotes
+    ```
+
+2.  Install dependencies:
+    ```bash
+    npm install
+    ```
+
+3.  Run the development server:
+    ```bash
+    npm run dev
+    ```
+
+4.  Open [http://localhost:3000](http://localhost:3000) with your browser.
+
+## 📁 Project Structure
+
+```
+stacknotes/
+├── app/
+│   ├── api/            # Local API routes for generic CRUD
+│   ├── globals.css     # Global styles & Tailwind config
+│   ├── layout.tsx      # Root layout w/ fonts
+│   └── page.tsx        # Main application entry
+├── components/         # React components
+│   ├── Editor/         # Tiptap editor configuration
+│   └── ...
+├── data/               # Local JSON storage for notes (created on runtime)
+├── stores/             # Zustand state stores
+└── public/             # Static assets
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📝 Usage
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Create a Page**: Click "New Page" in the sidebar.
+- **Slash Menu**: Type `/` in the editor to open the block menu.
+- **Formatting**: Select text to reveal the bubble menu for bold, italic, etc.
+- **Favorites**: Hover over a page in the sidebar and click the heart icon to pin it.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📄 License
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is open source and available under the [MIT License](LICENSE).
