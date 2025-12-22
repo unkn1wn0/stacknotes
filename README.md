@@ -35,7 +35,7 @@ A beautiful, local-first, Notion-like note-taking application built with Next.js
 
 1.  Clone the repository (or download the source):
     ```bash
-    git clone https://github.com/unkn1wn/stacknotes.git
+    git clone https://github.com/unkn1wn0/stacknotes.git
     cd stacknotes
     ```
 
