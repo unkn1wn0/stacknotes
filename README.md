@@ -67,12 +67,20 @@ stacknotes/
 ├── stores/             # Zustand state stores
 └── public/             # Static assets
 ```
+
+## Public instances
+~~There are no current public instances and there won't be until Stacknotes has reached to a usable and stable state~~
+
+Scratch that! There is now a public test instance of Stacknotes at: https://stacknotes-phi.vercel.app/
+
 ## Changelog
+**Stacknotes 0.1: First beta version of Stacknotes, pretty minimal**
+
 **Stacknotes 0.2 Unstable:**
-- ***MASSIVE* UI Overhaul**
-- **AI Voice Dictation (uses Whisper Flow Large v3 with groq, they provide a free API)**
-- **Command menu**
-- **View of notes in a stack**
+- *MASSIVE* UI Overhaul
+- AI Voice Dictation (uses Whisper Flow Large v3 with groq, they provide a free API)
+- Command menu
+- View of notes in a stack
 
 ## 📝 Usage
 
