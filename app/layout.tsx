@@ -40,6 +40,28 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         {children}
+        {/* Force remove Next.js dev tools portal */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                const observer = new MutationObserver((mutations) => {
+                  const portal = document.querySelector('nextjs-portal');
+                  if (portal) {
+                    portal.remove();
+                    // observer.disconnect(); // Keep observing in case it comes back
+                  }
+                });
+                observer.observe(document.body, { childList: true, subtree: true });
+                // Also try immediate removal
+                window.addEventListener('load', () => {
+                   const portal = document.querySelector('nextjs-portal');
+                   if (portal) portal.remove();
+                });
+              })();
+            `,
+          }}
+        />
       </body>
     </html>
   );

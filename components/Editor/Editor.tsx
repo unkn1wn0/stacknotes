@@ -27,7 +27,14 @@ import {
     Quote,
     Minus,
     Code2,
+    AlertCircle,
+    ChevronRight,
+    Link2,
+    Table,
 } from 'lucide-react';
+import Callout from './extensions/Callout';
+import ToggleBlock from './extensions/Toggle';
+import EmbedBlock from './extensions/Embed';
 
 interface SlashMenuItem {
     title: string;
@@ -97,6 +104,33 @@ const slashMenuItems: SlashMenuItem[] = [
         icon: <Code2 size={20} />,
         command: (editor) => editor?.chain().focus().toggleCodeBlock().run(),
     },
+    {
+        title: 'Callout',
+        description: 'Highlight important text.',
+        icon: <AlertCircle size={20} />,
+        command: (editor) => editor?.chain().focus().setCallout().run(),
+    },
+    {
+        title: 'Toggle List',
+        description: 'Collapsible block.',
+        icon: <ChevronRight size={20} />,
+        command: (editor) => editor?.chain().focus().setToggleBlock().run(),
+    },
+    {
+        title: 'Embed',
+        description: 'Embed external content.',
+        icon: <Link2 size={20} />,
+        command: (editor) => editor?.chain().focus().setEmbed().run(),
+    },
+    {
+        title: 'Database',
+        description: 'Insert a table database.',
+        icon: <Table size={20} />,
+        command: (editor) => editor?.chain().focus().insertContent({
+            type: 'paragraph',
+            content: [{ type: 'text', text: '📊 Database placeholder - coming soon!' }],
+        }).run(),
+    },
 ];
 
 interface EditorProps {
@@ -104,7 +138,13 @@ interface EditorProps {
     onUpdate: (content: string) => void;
 }
 
-export function Editor({ content, onUpdate }: EditorProps) {
+export interface EditorRef {
+    insertText: (text: string) => void;
+}
+
+import { forwardRef, useImperativeHandle } from 'react';
+
+export const Editor = forwardRef<EditorRef, EditorProps>(function Editor({ content, onUpdate }, ref) {
     const [showSlashMenu, setShowSlashMenu] = useState(false);
     const [slashMenuPosition, setSlashMenuPosition] = useState({ top: 0, left: 0 });
     const [selectedIndex, setSelectedIndex] = useState(0);
@@ -133,7 +173,13 @@ export function Editor({ content, onUpdate }: EditorProps) {
             TaskItem.configure({
                 nested: true,
             }),
+            TaskItem.configure({
+                nested: true,
+            }),
             Underline,
+            Callout,
+            ToggleBlock,
+            EmbedBlock,
         ],
         content: content ? JSON.parse(content) : { type: 'doc', content: [{ type: 'paragraph' }] },
         editorProps: {
@@ -161,6 +207,15 @@ export function Editor({ content, onUpdate }: EditorProps) {
             }
         },
     });
+
+    // Expose insertText method via ref
+    useImperativeHandle(ref, () => ({
+        insertText: (text: string) => {
+            if (editor) {
+                editor.chain().focus().insertContent(text).run();
+            }
+        },
+    }), [editor]);
 
     // Filter slash menu items
     const filteredItems = slashMenuItems.filter((item) =>
@@ -390,4 +445,4 @@ export function Editor({ content, onUpdate }: EditorProps) {
             )}
         </div>
     );
-}
+});

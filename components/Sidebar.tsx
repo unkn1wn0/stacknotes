@@ -14,7 +14,8 @@ import {
     FileText,
     Menu,
     Trash2,
-    Heart
+    Heart,
+    Layers
 } from 'lucide-react';
 
 interface PageTreeItemProps {
@@ -92,9 +93,10 @@ function PageTreeItem({ page, level, onNavigate }: PageTreeItemProps) {
 interface SidebarProps {
     onOpenSearch: () => void;
     onOpenSettings: () => void;
+    onOpenStack: () => void;
 }
 
-export function Sidebar({ onOpenSearch, onOpenSettings }: SidebarProps) {
+export function Sidebar({ onOpenSearch, onOpenSettings, onOpenStack }: SidebarProps) {
     const { pages, sidebarOpen, setSidebarOpen, createPage, setCurrentPage } = usePageStore();
     const rootPages = pages.filter((p) => p.parentId === null);
     const favoritePages = pages.filter((p) => p.isFavorite);
@@ -142,12 +144,35 @@ export function Sidebar({ onOpenSearch, onOpenSettings }: SidebarProps) {
             <nav className="sidebar-nav">
                 {/* Quick Actions */}
                 <div className="sidebar-section">
-                    <div className="nav-item" onClick={onOpenSearch}>
-                        <Search className="nav-item-icon" size={18} />
-                        <span>Search</span>
-                        <span style={{ marginLeft: 'auto', fontSize: 11, color: 'var(--text-tertiary)' }}>
+                    <div
+                        className="nav-item"
+                        onClick={onOpenSearch}
+                        style={{
+                            justifyContent: 'space-between',
+                            border: '1px solid transparent',
+                        }}
+                    >
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                            <Search className="nav-item-icon" size={18} />
+                            <span>Search</span>
+                        </div>
+                        <kbd
+                            style={{
+                                fontSize: 10,
+                                fontFamily: 'var(--font-mono)',
+                                color: 'var(--text-tertiary)',
+                                background: 'var(--bg-tertiary)',
+                                padding: '1px 4px',
+                                borderRadius: 4,
+                                border: '1px solid var(--border-color)',
+                            }}
+                        >
                             ⌘K
-                        </span>
+                        </kbd>
+                    </div>
+                    <div className="nav-item" onClick={onOpenStack}>
+                        <Layers className="nav-item-icon" size={18} />
+                        <span>Stack View</span>
                     </div>
                     <div className="nav-item" onClick={onOpenSettings}>
                         <Settings className="nav-item-icon" size={18} />
