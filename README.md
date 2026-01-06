@@ -2,7 +2,7 @@
 
 A beautiful, local-first, Notion-like note-taking application built with Next.js 15.
 
-<!-- Add preview.png here -->
+<!-- need to add preview -->
 
 ## ✨ Features
 
@@ -67,6 +67,12 @@ stacknotes/
 ├── stores/             # Zustand state stores
 └── public/             # Static assets
 ```
+## Changelog
+**Stacknotes 0.2 Unstable:**
+- ***MASSIVE* UI Overhaul**
+- **AI Voice Dictation (uses Whisper Flow Large v3 with groq, they provide a free API)**
+- **Command menu**
+- **View of notes in a stack**
 
 ## 📝 Usage
 
